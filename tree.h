@@ -30,7 +30,6 @@ private:
 public:
 	Tree();
 	~Tree();
-	int Insert(TreeNode *newNode);
 	vector<int> Path(int);
 	int Insert(int Key);
 	void SetNodes(int);

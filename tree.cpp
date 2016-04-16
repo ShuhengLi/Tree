@@ -53,42 +53,6 @@ int Tree::Insert(int i)
 
 	return true;
 }
-/*
-int Tree::Insert(int Key)
-{
-TreeNode *newNode;
-
-// Create the new node and copy data into it
-newNode = new TreeNode();
-newNode->Key = Key;
-newNode->data = 0;
-newNode->left = newNode->right = NULL;
-
-// Call other Insert() to do the actual insertion
-return(Insert(newNode));
-}
-
-int Tree::Insert(TreeNode *newNode)
-{
-TreeNode *temp;
-
-temp = root;
-if (temp == NULL) {
-root = newNode;
-newNode->data = 1;
-return true;
-}
-if (target->left == NULL) {
-target->left = newNode;
-return true;
-}
-if (target->right == NULL) {
-target->right = newNode;
-return true;
-}
-return 0;
-}
-*/
 
 bool Tree::find(int i) {
 	TreeNode *temp = root;
