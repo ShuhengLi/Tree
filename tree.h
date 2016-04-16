@@ -24,8 +24,8 @@ class Tree
 {
 private:
 	TreeNode *root;
-	TreeNode *target;
-	vector<int> p;
+	TreeNode *target;//target node
+	vector<int> p;//save path
 	vector<TreeNode*> nodes;
 public:
 	Tree();
@@ -40,11 +40,14 @@ public:
 	bool find(int);
 	bool preorder(int, TreeNode *T);
 	int getData(int);
+	void AddEdge(int, int);
+	void ShowV();
 private:
 	void ClearTree(TreeNode *T);
 	void PrintAll(TreeNode *T);
 	void Add_T(int, TreeNode *T);
 	void Path_T(int, TreeNode *T, vector<int> &res);
+	void remove_edge(TreeNode* cur);
 };
 
 #endif

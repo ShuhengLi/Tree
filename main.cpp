@@ -1,9 +1,15 @@
+/*
+Author: SHhuheng Li
+Date: 04/15/2016
+*/
+
 #include<iostream>
 #include<fstream>
 #include<stdlib.h>
 #include"tree.cpp"
 #include<vector>
 #include<string>
+using namespace std;
 
 vector<int> t_max(string t);
 vector<int> t_add(string t);
@@ -14,28 +20,27 @@ void display_f();
 vector<int> fout;
 vector<string> fin;
 
-using namespace std;
+
 int main() {
 
 	read_f();
 //	display_f();
 
-	int n = fin.size();
-	if (n < 1) cout << " Input file is invalid" << endl;
+
 //----------------------Get N----------------------------------------------
 	int N = stoi(fin[0]);
 	if (N < 1) cout << "N is too small" << endl;
 	if (N > 100000) cout << "N is too large" << endl;
 
 	Tree    *theTree = new Tree();
-	theTree->Insert(1);
-
-
+	theTree->SetNodes(N);
+//	theTree->ShowV();
 //---------------------------Build Tree-------------------------------------
 	for (int i = 1; i < N; i++) {
 		int x, y;
 		string temp = fin[i];
 		int temp_size = temp.size();
+
 		for (int j = 0; j < temp_size; j++) {
 //			theTree->PrintTree();
 			cout << endl;
@@ -49,14 +54,18 @@ int main() {
 				}
 
 				//y is the tree;
-				if (theTree->find(y)) {
+				else if (theTree->find(y)) {
 					theTree->Insert(x);
+				}
+				else {
+					theTree->AddEdge(x, y);
 				}
 
 				break;
 			}
 		}
 	}
+	theTree->PrintTree();
 
 //-------------------------------Get Q-----------------------
 	int Q = stoi(fin[N]);
@@ -130,15 +139,16 @@ int main() {
 				}
 				cout << "max is" << max << endl;
 				fout.push_back(max);
-				write_f();
+
 				break;
 
 			}
 		}
 	}
 
+	write_f();
+	cout << "done" << endl;
 	getchar();
-
 	return 0;
 }
 
@@ -197,6 +207,8 @@ void read_f() {
 		fin.push_back(stmp);
 	}
 	ifs.close();
+	int n = fin.size();
+	if (n < 1) cout << " Input file is invalid" << endl;
 }
 
 void display_f() {
